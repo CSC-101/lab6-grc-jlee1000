@@ -64,16 +64,66 @@ class TestCases(unittest.TestCase):
 
 
     # Part 1
+        def test_selection_sort_books_1(self):
+            books = [
+                data.Book(['Author A'], 'C Book'),
+                data.Book(['Author B'], 'A Book'),
+                data.Book(['Author C'], 'B Book')
+            ]
+            lab6.selection_sort_books(books)
+            expected_titles = ['A Book', 'B Book', 'C Book']
+            actual_titles = [book.title for book in books]
+            self.assertEqual(expected_titles, actual_titles)
 
+        def test_selection_sort_books_empty(self):
+            books = []
+            lab6.selection_sort_books(books)
+            self.assertEqual(books, [])
+
+    if __name__ == '__main__':
+        unittest.main()
 
     # Part 2
+        # Unit Test for swap_case
+        def test_swap_case_numbers_and_symbols(self):
+            input_str = "123 ABC def! @#$"
+            expected = "123 abc DEF! @#$"
+            actual = lab6.swap_case(input_str)
+            self.assertEqual(expected, actual)
 
+        def test_swap_case_all_uppercase(self):
+            input_str = "ALL UPPERCASE LETTERS"
+            expected = "all uppercase letters"
+            actual = lab6.swap_case(input_str)
+            self.assertEqual(expected, actual)
 
     # Part 3
+        # Unit Test for str_translate
+        def test_str_translate_basic(self):
+            input_str = "abcdcba"
+            expected = "xbcdcbx"
+            actual = lab6.str_translate(input_str, 'a', 'x')
+            self.assertEqual(expected, actual)
 
+        def test_str_translate_no_occurrences(self):
+            input_str = "hello world"
+            expected = "hello world"
+            actual = lab6.str_translate(input_str, 'x', 'y')  # 'x' does not exist
+            self.assertEqual(expected, actual)
 
     # Part 4
+    # Unit Test for histogram
+    def test_histogram_basic(self):
+        input_str = "apple banana apple"
+        expected = {'apple': 2, 'banana': 1}
+        actual = lab6.histogram(input_str)
+        self.assertEqual(expected, actual)
 
+    def test_histogram_with_punctuation(self):
+        input_str = "Hello world! Hello, hello."
+        expected = {'hello': 3, 'world!': 1, 'hello,': 1}
+        actual = lab6.histogram(input_str)
+        self.assertEqual(expected, actual)
 
 
 
